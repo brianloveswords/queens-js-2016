@@ -48,7 +48,7 @@ pre code.highlight {
 section {
   min-height: 800px;
   width: 80%;
-  padding: .5em;
+  padding: .5em 0 2em;
   margin: auto;
 }
 

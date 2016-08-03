@@ -15,7 +15,7 @@
 
 
       <section>
-        <h1>Session Agenda</h1>
+        <h1>Topics</h1>
         <ul>
           <li><code>console</code> methods beyond <code>.log</code></li>
           <li>How to read a stack trace</li>
@@ -28,26 +28,24 @@
 
 
       <section>
-        <h1>Session Goal</h1>
+        <h1>Goal</h1>
         <h2>Spark the 🔥 in your 💗 to explore your dev tools</h2>
       </section>
 
       <section>
         <h1>Who am I?</h1>
-      </section>
-
-
-
-      <section>
-        <h1>Who are you?</h1>
+        <p style="text-align: center">
+          <img src="images/bob.png" style="height: 500px; margin-right: 3em;">
+          <img src="images/brooklyn-js.png" style="height: 500px">
+        </p>
       </section>
 
 
       <section>
         <h1>
           like follow subscribe at<br>
-          <a href="//brianloveswords.github.io/srccon-2016">
-            brianloveswords.github.io/srccon-2016
+          <a href="//brianloveswords.github.io/queens-js-2016">
+            brianloveswords.github.io/queens-js-2016
           </a>
         </h1>
       </section>
@@ -57,6 +55,16 @@
       <section>
         <h1><em>shift+click</em> to execute code blocks</h1>
         <h2>if shit gets weird, refresh the page</h2>
+      </section>
+
+      <section>
+        <h1>Everything here should work in Chrome and Firefox *</h1>
+        <p>
+          Things will be in slightly different places and behave maybe
+          a little bit differently but all of the stuff I'm showing
+          here appears in some form or another in both.
+        </p>
+        <aside>*: Also probably Edge and Safari but I didn't test those</aside>
       </section>
 
 
@@ -178,7 +186,7 @@ console.log('this is how we do it');
 console.trace();
 
 // Groups can be nested & formatters work!
-console.groupCollapsed('do more stuff');
+console.groupCollapsed('%cdo more stuff', 'color: #f0f');
 console.info('this is some information');
 console.error('oh shit');
 console.groupEnd();
@@ -219,12 +227,6 @@ setInterval(_ => {
         <h1>A solution I have used</h1>
         <pre><code class="js" contenteditable>
 let debug = function (prefix, msg, ...rest) {
-  // Short-circuit on production. Use a build system
-  // system to include a script that sets this global state.
-  if (window.ENVIRONMENT === 'production') {
-    return true;
-  }
-
   let style = 'font-weight: bold; color: #dcd;';
 
   console.log(`%c:${prefix}:%c ${msg}`,
@@ -256,15 +258,19 @@ setTimeout(_ => {
   console.timeEnd('social-construct');
 }, 2000)
         </code></pre>
+        <aside>
+          Testimonial: my pal who saw me give this talk last week
+          texted me saying he used this to help debug an API he was
+          trying to use!
+        </aside>
       </section>
-
-
 
       <section>
         <h1><code>console.table()</code></h1>
         <h2>Sortable data in the console</h2>
         <pre><code class="js" contenteditable>
 // Remember to turn on async stack traces
+// Also, DevTools Settings -> Preferences -> Log XMLHttpRequests
 
 fetch('albums.json')
   .then(response => response.json())
